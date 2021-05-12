@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>External Exam</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid" ng-app="MyApp" ng-controller="MyController">
+    <h6>{{sid +'-'+ sname}}</h6>
+
+    <!--========Question 6========-->
+    <input type="button" ng-click="ToogleView()" class="btn btn-primary col-2" id="btnSwitch" value="Display">
+    <!--========End of Question 6========-->
+
+    <div class="row">
+      <!--========Question 3========-->
+      <div class="col-lg-4 bg-dark text-white p-3 m-3" id="divForm">
+        <form>
+          First Name:
+          <input type="text" class="form-control" ng-model="fname" placeholder="First name">
+
+          Last Name:
+          <input type="text" class="form-control" ng-model="lname" placeholder="Last name">
+
+          Maths:
+          <input type="number" class="form-control" min="0" max="101" ng-model="maths" placeholder="Score of Maths">
+
+          Science:
+          <input type="number" class="form-control" min="0" max="101" ng-model="science" placeholder="Score of Science">
+
+          English:
+          <input type="number" class="form-control" min="0" max="101" ng-model="english" placeholder="Score of English">
+
+          <input type="button" class="btn btn-primary form-control mt-3" ng-click="addToList()" value="Submit Data">
+        </form>
+      </div>
+      <!--========End of Question 3========-->
+      <!--========Question 2========-->
+      <div class="col-lg bg bg-danger p-3 m-3" id="divDisp" style="display: none;">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <!--========Question 5========-->
+              <th ng-click="OrderTable('id')">#</th>
+              <th ng-click="OrderTable('fname')">First Name</th>
+              <th ng-click="OrderTable('lname')">Last Name</th>
+              <th ng-click="OrderTable('maths')">Maths</th>
+              <th ng-click="OrderTable('science')">Science</th>
+              <th ng-click="OrderTable('english')">English</th>
+              <th ng-click="OrderTable('total')">Total</th>
+              <th ng-click="OrderTable('grace')">Grace Required</th>
+              <!--========End of Question 5========-->
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="aa in userList | orderBy: orderVar">
+              <td>{{aa.id}}</td>
+              <td>{{aa.fname}}</td>
+              <td>{{aa.lname}}</td>
+              <td>{{aa.maths}}</td>
+              <td>{{aa.science}}</td>
+              <td>{{aa.english}}</td>
+              <td>{{aa.total}}</td>
+              <td>{{aa.grace}}</td>
+              <td><button class="btn btn-primary" ng-click='DeleteRow(aa)'>DELETE</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--========End of Question 2========-->
+    </div>
+  </div>
+</body></html>
